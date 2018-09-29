@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+.eggs
+build
+dist
+neuraltree.egg-info
