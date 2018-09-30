@@ -4,3 +4,4 @@
 build
 dist
 neuraltree.egg-info
+neuraltree/__pycache__/
