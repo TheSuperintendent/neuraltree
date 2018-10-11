@@ -9,7 +9,6 @@ setup(
         "Cython",
         "Keras",
         "pytest",
-        # TODO: implement custom install command to install the igraph C core
         "python-igraph",
         "tensorflow"
     ],
