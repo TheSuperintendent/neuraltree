@@ -22,7 +22,6 @@ class LayerGraph:
         self.layer_name_to_layer = {}
 
     def add_layer(self, existing_layer_name, new_layer):
-        # TODO: change new_layer to new_layer_name to reduce need for error checking
         graph_size = len(self.graph.vs)
 
         if graph_size == 0:
@@ -42,13 +41,15 @@ class LayerGraph:
         self.graph.add_edge(existing_layer_name, new_layer.name)
 
     def add_graph(self, existing_layer_name, new_layer_graph):
-        new_vertices = new_layer_graph.vs
+        new_vertices = new_layer_graph.graph.vs
         self.graph.add_vertices(new_vertices["name"])
 
-        self.graph.add_edge(existing_layer_name, new_layer_graph.vs[0]["name"])
+        self.graph.add_edge(existing_layer_name, new_layer_graph.graph.vs[0]["name"])
 
         new_edge_tuples_by_name = [
             (new_vertices[edge.source], new_vertices[edge.target])
-            for edge in new_layer_graph.es
+            for edge in new_layer_graph.graph.es
         ]
         self.graph.add_edges(new_edge_tuples_by_name)
+
+        self.layer_name_to_layer.update(new_layer_graph.layer_name_to_layer)
